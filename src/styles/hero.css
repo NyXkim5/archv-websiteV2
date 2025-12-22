@@ -1,0 +1,138 @@
+/* ================================
+   HERO
+   ================================ */
+
+.hero {
+  padding: 160px 48px 100px;
+  max-width: 700px;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-label {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  font-family: var(--font-body);
+  font-style: italic;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hero-cta:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+.hero-cta svg {
+  transition: transform 0.2s ease;
+}
+
+.hero-cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* Trust Badges */
+.trust-badges {
+  display: flex;
+  gap: 0;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+
+.trust-badge {
+  padding: 16px 24px;
+  border: 1px solid var(--border-primary);
+  margin-right: -1px;
+  margin-bottom: -1px;
+}
+
+.trust-badge-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.trust-badge-sublabel {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* Page Hero (for other pages) */
+.page-hero {
+  padding: 140px 48px 80px;
+  max-width: 800px;
+}
+
+.page-hero .section-title {
+  font-size: clamp(40px, 5vw, 56px);
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 120px 48px 80px;
+  }
+
+  .trust-badges {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 24px 60px;
+  }
+
+  .page-hero {
+    padding: 100px 24px 60px;
+  }
+
+  .trust-badge {
+    padding: 12px 16px;
+  }
+}
