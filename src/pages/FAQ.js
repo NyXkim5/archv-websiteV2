@@ -197,6 +197,23 @@ function FAQ() {
 
   return (
     <div className="page">
+      {/* Mobile styles */}
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-image-desktop {
+            display: none !important;
+          }
+          .faq-categories {
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+          }
+          .faq-category-btn {
+            padding: 10px 16px !important;
+            font-size: 12px !important;
+          }
+        }
+      `}</style>
+
       <section
         className="page-hero"
         style={{ position: "relative", overflow: "visible" }}
@@ -207,6 +224,7 @@ function FAQ() {
           <p className="section-description">{faqData.subtitle}</p>
         </div>
         <div
+          className="hero-image-desktop"
           style={{
             position: "absolute",
             right: "-700px",

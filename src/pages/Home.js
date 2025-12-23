@@ -135,6 +135,15 @@ function Home() {
 
   return (
     <div className="page">
+      {/* Mobile-hide styles for hero image */}
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-image-desktop {
+            display: none !important;
+          }
+        }
+      `}</style>
+
       {/* Hero */}
       <section
         className="hero"
@@ -188,10 +197,10 @@ function Home() {
           </div>
         </div>
         <div
-          className="hero-image"
+          className="hero-image hero-image-desktop"
           style={{
             position: "absolute",
-            right: "-1150px",
+            right: "-1000px",
             top: "50%",
             transform: "translateY(-50%)",
             zIndex: 1,
@@ -201,7 +210,7 @@ function Home() {
             src="/visualcontent/HeroImg.svg"
             alt="Archv Platform"
             style={{
-              width: "1350px",
+              width: "1150px",
               height: "auto",
             }}
           />

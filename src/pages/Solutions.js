@@ -61,6 +61,15 @@ function Solutions() {
 
   return (
     <div className="page">
+      {/* Mobile-hide styles for hero image */}
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-image-desktop {
+            display: none !important;
+          }
+        }
+      `}</style>
+
       <section
         className="page-hero"
         style={{ position: "relative", overflow: "visible" }}
@@ -79,6 +88,7 @@ function Solutions() {
           </p>
         </div>
         <div
+          className="hero-image-desktop"
           style={{
             position: "absolute",
             right: "-700px",

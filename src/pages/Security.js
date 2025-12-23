@@ -307,8 +307,31 @@ function Security() {
 
   return (
     <div className="page">
+      {/* Mobile styles */}
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-image-desktop {
+            display: none !important;
+          }
+          .security-page-hero {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            min-height: auto !important;
+            padding-top: 60px !important;
+            padding-bottom: 60px !important;
+          }
+          .hero-text-content {
+            flex: 1 1 auto !important;
+            max-width: 100% !important;
+            margin-left: 0 !important;
+          }
+        }
+      `}</style>
+
       <section
-        className="page-hero"
+        className="page-hero security-page-hero"
         style={{
           display: "flex",
           alignItems: "center",
@@ -329,6 +352,7 @@ function Security() {
         }}
       >
         <div
+          className="hero-text-content"
           style={{ flex: "0 0 500px", maxWidth: "500px", marginLeft: "70px" }}
         >
           <span className="section-label">Security</span>
@@ -344,6 +368,7 @@ function Security() {
           </p>
         </div>
         <div
+          className="hero-image-desktop"
           style={{
             flex: "0 0 auto",
             display: "flex",

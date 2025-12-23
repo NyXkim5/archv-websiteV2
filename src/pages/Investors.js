@@ -8,6 +8,52 @@ function Investors() {
 
   return (
     <div className="page">
+      {/* Mobile styles */}
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-image-desktop {
+            display: none !important;
+          }
+          .investor-hero {
+            padding: 40px 20px !important;
+          }
+          .investor-content {
+            padding: 0 !important;
+          }
+          .investor-buttons {
+            flex-direction: column !important;
+            gap: 12px !important;
+          }
+          .investor-buttons .download-deck {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .why-now-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .market-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .business-model-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .timeline-with-visual {
+            flex-direction: column !important;
+            padding: 0 !important;
+          }
+          .timeline-container {
+            flex: 1 1 auto !important;
+            width: 100% !important;
+          }
+          .timeline-visual {
+            display: none !important;
+          }
+          .investor-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+
       <div
         className="investor-hero"
         style={{ position: "relative", overflow: "visible" }}
@@ -19,7 +65,7 @@ function Investors() {
           <span className="section-label">Investors</span>
           <h1
             className="section-title"
-            style={{ fontSize: "clamp(40px, 5vw, 56px)", marginBottom: "24px" }}
+            style={{ fontSize: "clamp(32px, 5vw, 56px)", marginBottom: "24px" }}
           >
             The operating system for regulated industries
           </h1>
@@ -63,6 +109,7 @@ function Investors() {
           </div>
         </div>
         <div
+          className="hero-image-desktop"
           style={{
             position: "absolute",
             right: "0px",

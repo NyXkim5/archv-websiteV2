@@ -48,6 +48,40 @@ function Pricing() {
 
   return (
     <div className="page">
+      {/* Mobile styles */}
+      <style>{`
+        @media (max-width: 768px) {
+          .pricing-main-card {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+            padding: 32px 24px !important;
+          }
+          .pricing-features-col {
+            border-left: none !important;
+            padding-left: 0 !important;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 32px !important;
+          }
+          .pricing-included-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .pricing-upgrades-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .pricing-upgrade-item {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+          }
+          .pricing-faq-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .pricing-cta {
+            padding: 60px 24px !important;
+          }
+        }
+      `}</style>
+
       <section className="page-hero">
         <span className="section-label">Pricing</span>
         <h1 className="section-title">One platform. One price.</h1>
@@ -60,6 +94,7 @@ function Pricing() {
       {/* Main Pricing Card */}
       <section>
         <div
+          className="pricing-main-card"
           style={{
             background: "#000",
             padding: "clamp(40px, 6vw, 80px)",
@@ -87,7 +122,7 @@ function Pricing() {
             </span>
             <h2
               style={{
-                fontSize: "clamp(36px, 5vw, 56px)",
+                fontSize: "clamp(28px, 5vw, 56px)",
                 fontWeight: "400",
                 marginBottom: "24px",
                 letterSpacing: "-0.03em",
@@ -141,6 +176,7 @@ function Pricing() {
             </button>
           </div>
           <div
+            className="pricing-features-col"
             style={{
               display: "flex",
               flexDirection: "column",
@@ -203,6 +239,7 @@ function Pricing() {
           </div>
         </div>
         <div
+          className="pricing-included-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
@@ -265,6 +302,7 @@ function Pricing() {
           </p>
         </div>
         <div
+          className="pricing-upgrades-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
@@ -275,6 +313,7 @@ function Pricing() {
           {upgrades.map((item, index) => (
             <div
               key={index}
+              className="pricing-upgrade-item"
               style={{
                 padding: "32px",
                 background: "#fafafa",
@@ -311,6 +350,7 @@ function Pricing() {
                   textTransform: "uppercase",
                   letterSpacing: "0.05em",
                   color: "#666",
+                  whiteSpace: "nowrap",
                 }}
               >
                 Add-on
@@ -329,6 +369,7 @@ function Pricing() {
           </div>
         </div>
         <div
+          className="pricing-faq-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
@@ -387,6 +428,7 @@ function Pricing() {
 
       {/* CTA */}
       <section
+        className="pricing-cta"
         style={{
           textAlign: "center",
           padding: "100px 24px",
