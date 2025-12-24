@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import VideoPlaceholder from "../components/VideoPlaceholder";
 
 function Home() {
   const navigate = useNavigate();
@@ -341,7 +340,17 @@ function Home() {
         </div>
         <div className="demo-container">
           <div className="demo-video">
-            <VideoPlaceholder label="Demo Video Coming Soon" />
+            <video
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{ width: "100%", borderRadius: "12px" }}
+            >
+              <source src="/visualcontent/ArchvDemo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
