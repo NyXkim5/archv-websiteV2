@@ -4,467 +4,365 @@ import { useNavigate } from "react-router-dom";
 function Pricing() {
   const navigate = useNavigate();
 
-  const included = [
-    {
-      feature: "Unlimited users",
-      desc: "Scale your team without per-seat costs",
-    },
-    {
-      feature: "Document generation",
-      desc: "Create compliant documents in seconds",
-    },
-    {
-      feature: "Microsoft Office integration",
-      desc: "Word, Excel, PowerPoint — all connected",
-    },
-    {
-      feature: "Full audit logging",
-      desc: "Every action tracked and exportable",
-    },
-    {
-      feature: "Role-based access control",
-      desc: "Granular permissions for your team",
-    },
-    { feature: "SSO & MFA", desc: "Enterprise-grade authentication" },
-    { feature: "API access", desc: "Build custom integrations" },
-    { feature: "Priority support", desc: "Direct line to our team" },
+  const tiers = [
+    { num: "01", name: "STARTUP", desc: "UP TO 25 USERS" },
+    { num: "02", name: "GROWTH", desc: "UP TO 100 USERS" },
+    { num: "03", name: "ENTERPRISE", desc: "UNLIMITED SCALE" },
   ];
 
-  const upgrades = [
-    {
-      name: "On-premise deployment",
-      desc: "Run Archv on your own infrastructure",
-    },
-    { name: "Custom integrations", desc: "Connect to your existing systems" },
-    {
-      name: "Dedicated success manager",
-      desc: "White-glove onboarding and support",
-    },
-    {
-      name: "Custom compliance modules",
-      desc: "Industry-specific configurations",
-    },
+  const features = [
+    { num: "01", name: "DOCUMENT GENERATION", desc: "ANY FORMAT" },
+    { num: "02", name: "MICROSOFT INTEGRATION", desc: "WORD + EXCEL + PPT" },
+    { num: "03", name: "FULL AUDIT LOGGING", desc: "COMPLIANCE TRAIL" },
+    { num: "04", name: "SSO & MFA", desc: "ENTERPRISE AUTH" },
+    { num: "05", name: "API ACCESS", desc: "INTEGRATIONS" },
+    { num: "06", name: "COMPLIANCE SUITE", desc: "SOC2 + HIPAA + GDPR" },
   ];
 
   return (
-    <div className="page">
-      {/* Mobile styles */}
+    <div
+      className="page"
+      style={{
+        backgroundImage: `
+          linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)
+        `,
+        backgroundSize: "40px 40px",
+        padding: "40px 70px",
+      }}
+    >
       <style>{`
+        .pricing-hero {
+          margin-bottom: 30px;
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 24px;
+          align-items: end;
+        }
+        .pricing-hero-label {
+          font-size: 12px;
+          color: #999;
+          font-style: italic;
+          margin-bottom: 8px;
+        }
+        .pricing-hero-title {
+          font-size: clamp(32px, 7vw, 56px);
+          font-weight: 500;
+          letter-spacing: -0.03em;
+          line-height: 1;
+          margin-bottom: 12px;
+        }
+        .pricing-hero-desc {
+          font-size: 14px;
+          color: #666;
+          max-width: 340px;
+          line-height: 1.6;
+        }
+        .pricing-hero-barcode {
+          opacity: 0.6;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 6px;
+        }
+        .pricing-hero-barcode img {
+          height: 280px;
+          width: auto;
+        }
+        .pricing-hero-barcode-text {
+          font-size: 9px;
+          color: #999;
+          letter-spacing: 0.1em;
+          font-family: monospace;
+        }
+        .pricing-section {
+          margin-bottom: 24px;
+        }
+        .pricing-section-label {
+          font-size: 10px;
+          color: #999;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .pricing-list {
+          display: flex;
+          flex-direction: column;
+        }
+        .pricing-item {
+          display: grid;
+          grid-template-columns: 50px 1fr auto;
+          align-items: baseline;
+          padding: 12px 0;
+          border-bottom: 1px solid rgba(0,0,0,0.08);
+          gap: 12px;
+        }
+        .pricing-item:first-child {
+          border-top: 1px solid rgba(0,0,0,0.08);
+        }
+        .pricing-item-num {
+          font-size: 12px;
+          color: #bbb;
+          font-style: italic;
+        }
+        .pricing-item-name {
+          font-size: clamp(18px, 3.5vw, 26px);
+          font-weight: 500;
+          letter-spacing: -0.01em;
+          line-height: 1.1;
+        }
+        .pricing-item-desc {
+          font-size: 10px;
+          color: #888;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          text-align: right;
+        }
+        .pricing-notes {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+          padding: 20px 0;
+          border-top: 1px solid rgba(0,0,0,0.06);
+          margin-bottom: 24px;
+        }
+        .pricing-note-num {
+          font-size: 10px;
+          color: #ccc;
+          margin-bottom: 4px;
+        }
+        .pricing-note-title {
+          font-size: 12px;
+          font-weight: 500;
+          margin-bottom: 2px;
+        }
+        .pricing-note-desc {
+          font-size: 11px;
+          color: #888;
+          line-height: 1.4;
+        }
+        .pricing-cta {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 20px;
+          padding: 40px 0;
+          border-top: 1px solid rgba(0,0,0,0.08);
+          text-align: center;
+        }
+        .pricing-cta-title {
+          font-size: clamp(20px, 3vw, 28px);
+          font-weight: 500;
+          letter-spacing: -0.02em;
+          line-height: 1.1;
+        }
+        .pricing-cta-btn {
+          background: #000;
+          color: #fff;
+          border: none;
+          padding: 14px 28px;
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          transition: background 0.2s;
+        }
+        .pricing-cta-btn:hover {
+          background: #333;
+        }
+        .pricing-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-top: 20px;
+          border-top: 1px solid rgba(0,0,0,0.04);
+          font-size: 10px;
+          color: #ccc;
+          letter-spacing: 0.05em;
+        }
+        .pricing-footer-barcode {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .pricing-footer-barcode img {
+          height: 24px;
+          width: auto;
+          opacity: 0.4;
+        }
+        
+        @media (max-width: 900px) {
+          .pricing-hero-barcode img {
+            height: 180px;
+          }
+        }
+        
         @media (max-width: 768px) {
-          .pricing-main-card {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
-            padding: 32px 24px !important;
+          .pricing-hero {
+            grid-template-columns: 1fr;
+            margin-bottom: 24px;
+            gap: 20px;
           }
-          .pricing-features-col {
-            border-left: none !important;
-            padding-left: 0 !important;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 32px !important;
+          .pricing-hero-barcode {
+            align-items: flex-start;
           }
-          .pricing-included-grid {
-            grid-template-columns: 1fr !important;
+          .pricing-hero-barcode img {
+            height: 100px;
           }
-          .pricing-upgrades-grid {
-            grid-template-columns: 1fr !important;
+          .pricing-hero-title {
+            font-size: 28px;
           }
-          .pricing-upgrade-item {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            gap: 12px !important;
+          .pricing-section {
+            margin-bottom: 20px;
           }
-          .pricing-faq-grid {
-            grid-template-columns: 1fr !important;
+          .pricing-item {
+            grid-template-columns: 40px 1fr;
+            gap: 8px;
+            padding: 10px 0;
+          }
+          .pricing-item-desc {
+            grid-column: 2;
+            text-align: left;
+            margin-top: 4px;
+          }
+          .pricing-item-name {
+            font-size: 16px;
+          }
+          .pricing-notes {
+            grid-template-columns: 1fr;
+            gap: 12px;
+            padding: 16px 0;
           }
           .pricing-cta {
-            padding: 60px 24px !important;
+            padding: 30px 0;
+          }
+          .pricing-cta-title {
+            font-size: 22px;
+          }
+          .pricing-footer {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+          }
+          .pricing-footer-barcode {
+            order: -1;
+          }
+          .pricing-section-label {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .pricing-hero-barcode img {
+            height: 70px;
+          }
+          .pricing-hero-title {
+            font-size: 24px;
+          }
+          .pricing-item-name {
+            font-size: 15px;
+          }
+          .pricing-cta-btn {
+            width: 100%;
+            justify-content: center;
           }
         }
       `}</style>
 
-      <section className="page-hero">
-        <span className="section-label">Pricing</span>
-        <h1 className="section-title">One platform. One price.</h1>
-        <p className="section-description">
-          No per-seat fees. No feature gating. Get everything you need to run
-          compliant AI workflows across your entire organization.
-        </p>
-      </section>
-
-      {/* Main Pricing Card */}
-      <section>
-        <div
-          className="pricing-main-card"
-          style={{
-            background: "#000",
-            padding: "clamp(40px, 6vw, 80px)",
-            color: "#fff",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "64px",
-            alignItems: "start",
-          }}
-        >
-          <div>
-            <span
-              style={{
-                display: "inline-block",
-                padding: "8px 16px",
-                border: "1px solid rgba(255,255,255,0.2)",
-                fontSize: "11px",
-                fontWeight: "500",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                marginBottom: "32px",
-              }}
-            >
-              All-inclusive
-            </span>
-            <h2
-              style={{
-                fontSize: "clamp(28px, 5vw, 56px)",
-                fontWeight: "400",
-                marginBottom: "24px",
-                letterSpacing: "-0.03em",
-                lineHeight: "1.1",
-                fontStyle: "italic",
-              }}
-            >
-              Custom pricing for your organization
-            </h2>
-            <p
-              style={{
-                fontSize: "15px",
-                color: "rgba(255,255,255,0.6)",
-                lineHeight: "1.7",
-                marginBottom: "48px",
-                maxWidth: "400px",
-              }}
-            >
-              We tailor pricing to your team size, usage, and compliance needs.
-              No surprises, no hidden fees.
-            </p>
-            <button
-              onClick={() => navigate("/contact")}
-              style={{
-                background: "#fff",
-                color: "#000",
-                border: "none",
-                padding: "18px 36px",
-                fontSize: "13px",
-                fontWeight: "500",
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                cursor: "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "12px",
-                transition: "all 0.2s ease",
-              }}
-            >
-              Get a Quote
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 16 16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path d="M3 8h10M9 4l4 4-4 4" />
-              </svg>
-            </button>
-          </div>
-          <div
-            className="pricing-features-col"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "0",
-              borderLeft: "1px solid rgba(255,255,255,0.1)",
-              paddingLeft: "48px",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "11px",
-                fontWeight: "500",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                color: "rgba(255,255,255,0.4)",
-                marginBottom: "24px",
-              }}
-            >
-              Everything included
-            </span>
-            {included.map((item, index) => (
-              <div
-                key={index}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "16px",
-                  padding: "14px 0",
-                  borderBottom:
-                    index < included.length - 1
-                      ? "1px solid rgba(255,255,255,0.06)"
-                      : "none",
-                }}
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.4)"
-                  strokeWidth="1.5"
-                >
-                  <path d="M3 8l4 4 6-8" />
-                </svg>
-                <span style={{ fontSize: "14px", fontWeight: "400" }}>
-                  {item.feature}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What's Included Detail */}
-      <section>
-        <div className="section-header">
-          <div>
-            <span className="section-label">What You Get</span>
-            <h2 className="section-title">Everything to run compliant AI</h2>
-          </div>
-        </div>
-        <div
-          className="pricing-included-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "1px",
-            background: "rgba(0,0,0,0.08)",
-          }}
-        >
-          {included.map((item, index) => (
-            <div
-              key={index}
-              style={{
-                padding: "32px",
-                background: "#fff",
-              }}
-            >
-              <span
-                style={{
-                  display: "block",
-                  fontSize: "11px",
-                  fontWeight: "500",
-                  color: "#999",
-                  marginBottom: "16px",
-                }}
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "500",
-                  marginBottom: "12px",
-                }}
-              >
-                {item.feature}
-              </h3>
-              <p
-                style={{
-                  fontSize: "13px",
-                  color: "#666",
-                  lineHeight: "1.6",
-                }}
-              >
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Upgrades */}
-      <section>
-        <div className="section-header">
-          <div>
-            <span className="section-label">Add-ons</span>
-            <h2 className="section-title">Available upgrades</h2>
-          </div>
-          <p className="section-description">
-            Need more? These enterprise add-ons are available for organizations
-            with specific requirements.
+      {/* Hero */}
+      <div className="pricing-hero">
+        <div className="pricing-hero-left">
+          <div className="pricing-hero-label">( pricing )</div>
+          <h1 className="pricing-hero-title">
+            Custom plans,
+            <br />
+            built for you.
+          </h1>
+          <p className="pricing-hero-desc">
+            Tailored packages based on your team size and compliance needs. No
+            per-seat fees.
           </p>
         </div>
-        <div
-          className="pricing-upgrades-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "1px",
-            background: "rgba(0,0,0,0.08)",
-          }}
-        >
-          {upgrades.map((item, index) => (
-            <div
-              key={index}
-              className="pricing-upgrade-item"
-              style={{
-                padding: "32px",
-                background: "#fafafa",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <div>
-                <h3
-                  style={{
-                    fontSize: "15px",
-                    fontWeight: "500",
-                    marginBottom: "6px",
-                  }}
-                >
-                  {item.name}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "13px",
-                    color: "#666",
-                  }}
-                >
-                  {item.desc}
-                </p>
-              </div>
-              <span
-                style={{
-                  padding: "6px 14px",
-                  border: "1px solid rgba(0,0,0,0.1)",
-                  fontSize: "11px",
-                  fontWeight: "500",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                  color: "#666",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Add-on
-              </span>
+        <div className="pricing-hero-barcode">
+          <img src="/visualcontent/barcode.svg" alt="" />
+          <span className="pricing-hero-barcode-text">ARCHV-PRC-2025</span>
+        </div>
+      </div>
+
+      {/* Tiers */}
+      <section className="pricing-section">
+        <div className="pricing-section-label">
+          <span>PLANS</span>
+          <span>( 01 - 03 )</span>
+        </div>
+        <div className="pricing-list">
+          {tiers.map((tier) => (
+            <div key={tier.num} className="pricing-item">
+              <span className="pricing-item-num">( {tier.num} )</span>
+              <span className="pricing-item-name">{tier.name}</span>
+              <span className="pricing-item-desc">{tier.desc}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* FAQ */}
-      <section>
-        <div className="section-header">
-          <div>
-            <span className="section-label">FAQ</span>
-            <h2 className="section-title">Common questions</h2>
-          </div>
+      {/* Features */}
+      <section className="pricing-section">
+        <div className="pricing-section-label">
+          <span>ALL PLANS INCLUDE</span>
+          <span>( 01 - 06 )</span>
         </div>
-        <div
-          className="pricing-faq-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "1px",
-            background: "rgba(0,0,0,0.08)",
-            border: "1px solid rgba(0,0,0,0.08)",
-          }}
-        >
-          {[
-            {
-              q: "How does pricing work?",
-              a: "We price based on your organization size and usage patterns. No per-seat fees — your whole team gets access.",
-            },
-            {
-              q: "Is there a free trial?",
-              a: "Yes. We offer a 14-day pilot program so you can test Archv with your actual workflows before committing.",
-            },
-            {
-              q: "What about compliance certifications?",
-              a: "All plans include our full compliance suite — SOC 2, HIPAA-ready, GDPR compliant. No extra charge.",
-            },
-            {
-              q: "Can I switch plans later?",
-              a: "Absolutely. As your needs grow, we'll adjust your plan. Upgrades are seamless with no downtime.",
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              style={{
-                padding: "32px",
-                background: "#fff",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "15px",
-                  fontWeight: "500",
-                  marginBottom: "12px",
-                }}
-              >
-                {item.q}
-              </h3>
-              <p
-                style={{
-                  fontSize: "13px",
-                  color: "#666",
-                  lineHeight: "1.7",
-                }}
-              >
-                {item.a}
-              </p>
+        <div className="pricing-list">
+          {features.map((feature) => (
+            <div key={feature.num} className="pricing-item">
+              <span className="pricing-item-num">( {feature.num} )</span>
+              <span className="pricing-item-name">{feature.name}</span>
+              <span className="pricing-item-desc">{feature.desc}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section
-        className="pricing-cta"
-        style={{
-          textAlign: "center",
-          padding: "100px 24px",
-          borderTop: "1px solid rgba(0,0,0,0.08)",
-          marginTop: "80px",
-        }}
-      >
-        <span className="section-label">Get Started</span>
-        <h2 className="section-title">Ready to see Archv in action?</h2>
-        <p
-          className="section-description"
-          style={{ maxWidth: "460px", margin: "0 auto 40px" }}
-        >
-          Book a demo and we'll show you how Archv can transform your workflows.
-        </p>
+      {/* Notes */}
+      <div className="pricing-notes">
+        <div>
+          <div className="pricing-note-num">( i )</div>
+          <div className="pricing-note-title">No per-seat fees</div>
+          <div className="pricing-note-desc">Whole team, one price.</div>
+        </div>
+        <div>
+          <div className="pricing-note-num">( ii )</div>
+          <div className="pricing-note-title">Compliance included</div>
+          <div className="pricing-note-desc">SOC 2, HIPAA, GDPR ready.</div>
+        </div>
+        <div>
+          <div className="pricing-note-num">( iii )</div>
+          <div className="pricing-note-title">Flexible terms</div>
+          <div className="pricing-note-desc">Monthly or annual billing.</div>
+        </div>
+      </div>
+
+      {/* CTA - Centered */}
+      <div className="pricing-cta">
+        <h2 className="pricing-cta-title">Let's build your plan</h2>
         <button
+          className="pricing-cta-btn"
           onClick={() => navigate("/contact")}
-          style={{
-            background: "#000",
-            color: "#fff",
-            border: "none",
-            padding: "18px 40px",
-            fontSize: "13px",
-            fontWeight: "500",
-            textTransform: "uppercase",
-            letterSpacing: "0.05em",
-            cursor: "pointer",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "12px",
-          }}
         >
-          Request a Demo
+          Request a Quote
           <svg
-            width="14"
-            height="14"
+            width="12"
+            height="12"
             viewBox="0 0 16 16"
             fill="none"
             stroke="currentColor"
@@ -473,7 +371,16 @@ function Pricing() {
             <path d="M3 8h10M9 4l4 4-4 4" />
           </svg>
         </button>
-      </section>
+      </div>
+
+      {/* Footer */}
+      <div className="pricing-footer">
+        <span>ARCHV PRICING 2025</span>
+        <div className="pricing-footer-barcode">
+          <img src="/visualcontent/barcode.svg" alt="" />
+          <span>( 01 - 06 )</span>
+        </div>
+      </div>
     </div>
   );
 }
