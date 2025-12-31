@@ -122,7 +122,7 @@ function Investors() {
             src="/visualcontent/InvestorImg.svg"
             alt="Archv Investors"
             style={{
-              width: "1350px",
+              width: "950px",
               height: "auto",
             }}
           />

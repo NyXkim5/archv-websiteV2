@@ -61,32 +61,75 @@ function Contact() {
 
   return (
     <div className="page">
+      {/* Mobile styles */}
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-video-container {
+            display: none !important;
+          }
+        }
+      `}</style>
+
       <div className="contact-container">
-        <div className="contact-info">
-          <h1>Let's talk</h1>
-          <p>
-            Ready to see how Archv can transform your workflow? Fill out the
-            form and we'll be in touch within 24 hours.
-          </p>
-          <div className="contact-details">
-            <div className="contact-item">
-              <span className="contact-item-label">Email</span>
-              <span className="contact-item-value">
-                <a href="mailto:hello@archvai.com">hello@archvai.com</a>
-              </span>
+        <div
+          className="contact-info"
+          style={{ display: "flex", flexDirection: "column", height: "100%" }}
+        >
+          <div>
+            <h1>Let's talk</h1>
+            <p>
+              Ready to see how Archv can transform your workflow? Fill out the
+              form and we'll be in touch within 24 hours.
+            </p>
+            <div className="contact-details">
+              <div className="contact-item">
+                <span className="contact-item-label">Email</span>
+                <span className="contact-item-value">
+                  <a href="mailto:hello@archvai.com">hello@archvai.com</a>
+                </span>
+              </div>
+              <div className="contact-item">
+                <span className="contact-item-label">LinkedIn</span>
+                <span className="contact-item-value">
+                  <a
+                    href="https://www.linkedin.com/company/archvai/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    @archvai
+                  </a>
+                </span>
+              </div>
             </div>
-            <div className="contact-item">
-              <span className="contact-item-label">LinkedIn</span>
-              <span className="contact-item-value">
-                <a
-                  href="https://www.linkedin.com/company/archvai/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  @archvai
-                </a>
-              </span>
-            </div>
+          </div>
+
+          {/* Logo Video */}
+          <div
+            className="contact-video-container"
+            style={{
+              flex: 1,
+              display: "flex",
+              alignItems: "flex-start",
+              justifyContent: "flex-end",
+              marginTop: "-70px",
+              paddingRight: "40px",
+              maxWidth: "100%",
+            }}
+          >
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                width: "100%",
+                maxWidth: "350px",
+                height: "auto",
+                objectFit: "contain",
+              }}
+            >
+              <source src="/visualcontent/ArchvLogoVid.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
         <div className="contact-form">
