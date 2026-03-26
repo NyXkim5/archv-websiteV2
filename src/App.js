@@ -30,6 +30,13 @@ function App() {
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/security" element={<Security />} />
+          <Route path="*" element={
+            <div className="page" style={{ textAlign: 'center', padding: '120px 24px' }}>
+              <h1 style={{ fontSize: '48px', fontFamily: 'var(--font-sans)', marginBottom: '16px' }}>404</h1>
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '24px' }}>Page not found</p>
+              <a href="/" style={{ color: 'var(--text-primary)', textDecoration: 'underline' }}>Back to home</a>
+            </div>
+          } />
         </Routes>
       </main>
       <Footer />

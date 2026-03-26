@@ -33,7 +33,7 @@ function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span className="footer-copyright">© 2025 Archv AI. All rights reserved.</span>
+        <span className="footer-copyright">© {new Date().getFullYear()} Archv AI. All rights reserved.</span>
         <div className="footer-legal">
           <Link to="/terms">Terms</Link>
           <Link to="/privacy">Privacy</Link>

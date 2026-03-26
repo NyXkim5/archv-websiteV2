@@ -1,5 +1,50 @@
 import React, { useEffect, useRef, useState } from "react";
 
+const milestones = [
+  {
+    date: "Q4 2025",
+    title: "Launch & Legal Focus",
+    description:
+      "Public launch targeting law firms. First demo users. SOC 2 Type II certification in progress.",
+    active: true,
+  },
+  {
+    date: "Q1 2026",
+    title: "Product Expansion",
+    description:
+      "Microsoft Office integration. Advanced document generation. Enterprise features rollout.",
+    active: false,
+  },
+  {
+    date: "Q2 2026",
+    title: "Healthcare Vertical",
+    description:
+      "HIPAA-compliant deployment. Healthcare-specific workflows. Clinical documentation features.",
+    active: false,
+  },
+  {
+    date: "Q3 2026",
+    title: "Financial Vertical",
+    description:
+      "SEC. FINRA. SOX. Every regulator watching every move. Archv gives your team AI-powered workflows with the compliance infrastructure financial services demands.",
+    active: false,
+  },
+  {
+    date: "Q4 2026",
+    title: "Education Vertical",
+    description:
+      "FERPA compliance. Academic integrity features. K-12 and higher education focus.",
+    active: false,
+  },
+  {
+    date: "Beyond",
+    title: "Scale",
+    description:
+      "Series A. International expansion. Full platform maturity across all verticals.",
+    active: false,
+  },
+];
+
 function Timeline() {
   const [isVisible, setIsVisible] = useState(false);
   const timelineRef = useRef(null);
@@ -21,51 +66,6 @@ function Timeline() {
     return () => observer.disconnect();
   }, []);
 
-  const milestones = [
-    {
-      date: "Q4 2025",
-      title: "Launch & Legal Focus",
-      description:
-        "Public launch targeting law firms. First demo users. SOC 2 Type II certification in progress.",
-      active: true,
-    },
-    {
-      date: "Q1 2026",
-      title: "Product Expansion",
-      description:
-        "Microsoft Office integration. Advanced document generation. Enterprise features rollout.",
-      active: false,
-    },
-    {
-      date: "Q2 2026",
-      title: "Healthcare Vertical",
-      description:
-        "HIPAA-compliant deployment. Healthcare-specific workflows. Clinical documentation features.",
-      active: false,
-    },
-    {
-      date: "Q3 2026",
-      title: "Financial Vertical",
-      description:
-        "SEC. FINRA. SOX. Every regulator watching every move. Archv gives your team AI-powered workflows with the compliance infrastructure financial services demands.",
-      active: false,
-    },
-    {
-      date: "Q4 2026",
-      title: "Education Vertical",
-      description:
-        "FERPA compliance. Academic integrity features. K-12 and higher education focus.",
-      active: false,
-    },
-    {
-      date: "Beyond",
-      title: "Scale",
-      description:
-        "Series A. International expansion. Full platform maturity across all verticals.",
-      active: false,
-    },
-  ];
-
   return (
     <section className="timeline" ref={timelineRef}>
       <div className="timeline-header">
@@ -78,9 +78,10 @@ function Timeline() {
         </div>
         {milestones.map((milestone, index) => (
           <div
-            key={index}
+            key={milestone.date}
             className={`timeline-item ${milestone.active ? "active" : ""}`}
             style={{ animationDelay: `${index * 0.15}s` }}
+            {...(milestone.active ? { "aria-current": "step" } : {})}
           >
             <div className="timeline-dot">
               {milestone.active && <span className="timeline-dot-pulse"></span>}

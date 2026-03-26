@@ -120,6 +120,7 @@ function Contact() {
                   strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  aria-hidden="true"
                 >
                   <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="M22 6L12 13L2 6" />
@@ -139,6 +140,7 @@ function Contact() {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="currentColor"
+                  aria-hidden="true"
                 >
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
@@ -164,6 +166,7 @@ function Contact() {
               loop
               muted
               playsInline
+              aria-label="Archv logo animation"
               style={{
                 width: "100%",
                 height: "100%",
@@ -191,6 +194,7 @@ function Contact() {
                 stroke="#22c55e"
                 strokeWidth="2"
                 style={{ marginBottom: "16px" }}
+                aria-hidden="true"
               >
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                 <polyline points="22 4 12 14.01 9 11.01" />
@@ -218,8 +222,9 @@ function Contact() {
           ) : (
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label className="form-label">Name</label>
+                <label htmlFor="contact-name" className="form-label">Name</label>
                 <input
+                  id="contact-name"
                   type="text"
                   name="name"
                   className="form-input"
@@ -230,8 +235,9 @@ function Contact() {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">Email</label>
+                <label htmlFor="contact-email" className="form-label">Email</label>
                 <input
+                  id="contact-email"
                   type="email"
                   name="email"
                   className="form-input"
@@ -242,8 +248,9 @@ function Contact() {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">Company</label>
+                <label htmlFor="contact-company" className="form-label">Company</label>
                 <input
+                  id="contact-company"
                   type="text"
                   name="company"
                   className="form-input"
@@ -253,8 +260,9 @@ function Contact() {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">Role</label>
+                <label htmlFor="contact-role" className="form-label">Role</label>
                 <select
+                  id="contact-role"
                   name="role"
                   className="form-select"
                   value={formData.role}
@@ -269,8 +277,9 @@ function Contact() {
                 </select>
               </div>
               <div className="form-group">
-                <label className="form-label">Message</label>
+                <label htmlFor="contact-message" className="form-label">Message</label>
                 <textarea
+                  id="contact-message"
                   name="message"
                   className="form-textarea"
                   value={formData.message}
@@ -317,6 +326,7 @@ function Contact() {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="1.5"
+                      aria-hidden="true"
                     >
                       <path d="M3 8h10M9 4l4 4-4 4" />
                     </svg>

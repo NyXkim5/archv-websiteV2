@@ -1,163 +1,142 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+const industries = [
+  {
+    id: "legal",
+    number: "01",
+    name: "Legal",
+    description:
+      "Draft briefs, review contracts, research case law, generate client letters — all compliant with attorney-client privilege and bar requirements.",
+    features: [
+      "Contract drafting & review",
+      "Legal research & citations",
+      "Client communication",
+      "Privilege-protected workflows",
+    ],
+    icon: (
+      <svg className="industry-icon" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="8" y="12" width="32" height="28" rx="1" />
+        <path d="M16 12V8h16v4" />
+        <path d="M16 24h16M16 32h10" />
+      </svg>
+    ),
+  },
+  {
+    id: "healthcare",
+    number: "02",
+    name: "Healthcare",
+    description:
+      "Clinical documentation, patient summaries, research synthesis, intake forms — HIPAA-compliant from input to export.",
+    features: [
+      "Clinical notes & summaries",
+      "Patient intake automation",
+      "Medical research synthesis",
+      "PHI-protected processing",
+    ],
+    icon: (
+      <svg className="industry-icon" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="16" />
+        <path d="M24 16v16M16 24h16" />
+      </svg>
+    ),
+  },
+  {
+    id: "education",
+    number: "03",
+    name: "Education",
+    description:
+      "Lesson plans, student reports, curriculum development, administrative documents — FERPA-compliant with academic integrity built in.",
+    features: [
+      "Curriculum & lesson planning",
+      "Student progress reports",
+      "Administrative workflows",
+      "Academic integrity protection",
+    ],
+    icon: (
+      <svg className="industry-icon" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M8 20l16-8 16 8-16 8-16-8z" />
+        <path d="M12 22v10c0 2 5.4 6 12 6s12-4 12-6V22" />
+        <path d="M40 20v12" />
+      </svg>
+    ),
+  },
+  {
+    id: "finance",
+    number: "04",
+    name: "Finance",
+    description:
+      "Reports, analysis, presentations, client communications — SEC, FINRA, and SOX compliant with full audit trails.",
+    features: [
+      "Financial report generation",
+      "Regulatory compliance docs",
+      "Client presentations",
+      "Audit trail exports",
+    ],
+    icon: (
+      <svg className="industry-icon" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="6" y="22" width="8" height="18" />
+        <rect x="20" y="14" width="8" height="26" />
+        <rect x="34" y="8" width="8" height="32" />
+      </svg>
+    ),
+  },
+];
+
+const capabilities = [
+  {
+    number: "01",
+    title: "Create Any Document",
+    description:
+      "Word documents, PDFs, contracts, briefs, reports — generate professional documents in seconds. Export to any format, ready for clients or regulators.",
+  },
+  {
+    number: "02",
+    title: "Build Presentations",
+    description:
+      "Slide decks, pitch materials, board presentations — create polished PowerPoint and Google Slides directly in Archv. One click to export.",
+  },
+  {
+    number: "03",
+    title: "Process Any File",
+    description:
+      "Upload documents, images, spreadsheets, PDFs. Archv reads, analyzes, extracts, and transforms any file type into actionable output.",
+  },
+  {
+    number: "04",
+    title: "Microsoft Integration",
+    description:
+      "Native components for Word, PowerPoint, Outlook. Work inside the tools you already use with full compliance protection.",
+  },
+  {
+    number: "05",
+    title: "Complete Audit Logs",
+    description:
+      "Every action logged, timestamped, and exportable. Generate compliance reports for regulators in one click. Your audit trail, always ready.",
+  },
+  {
+    number: "06",
+    title: "One Platform, Everything",
+    description:
+      "Stop switching between tools. Research, draft, design, analyze, export — all in one place with one compliance layer protecting everything.",
+  },
+];
+
+const trustBadges = [
+  { label: "SOC 2", sublabel: "In Progress" },
+  { label: "HIPAA", sublabel: "Ready" },
+  { label: "GDPR", sublabel: "Compliant" },
+  { label: "AES-256", sublabel: "Encryption" },
+];
+
 function Home() {
   const navigate = useNavigate();
 
-  const industries = [
-    {
-      id: "legal",
-      number: "01",
-      name: "Legal",
-      description:
-        "Draft briefs, review contracts, research case law, generate client letters — all compliant with attorney-client privilege and bar requirements.",
-      features: [
-        "Contract drafting & review",
-        "Legal research & citations",
-        "Client communication",
-        "Privilege-protected workflows",
-      ],
-      icon: (
-        <svg className="industry-icon" viewBox="0 0 48 48">
-          <rect x="8" y="12" width="32" height="28" rx="1" />
-          <path d="M16 12V8h16v4" />
-          <path d="M16 24h16M16 32h10" />
-        </svg>
-      ),
-    },
-    {
-      id: "healthcare",
-      number: "02",
-      name: "Healthcare",
-      description:
-        "Clinical documentation, patient summaries, research synthesis, intake forms — HIPAA-compliant from input to export.",
-      features: [
-        "Clinical notes & summaries",
-        "Patient intake automation",
-        "Medical research synthesis",
-        "PHI-protected processing",
-      ],
-      icon: (
-        <svg className="industry-icon" viewBox="0 0 48 48">
-          <circle cx="24" cy="24" r="16" />
-          <path d="M24 16v16M16 24h16" />
-        </svg>
-      ),
-    },
-    {
-      id: "education",
-      number: "03",
-      name: "Education",
-      description:
-        "Lesson plans, student reports, curriculum development, administrative documents — FERPA-compliant with academic integrity built in.",
-      features: [
-        "Curriculum & lesson planning",
-        "Student progress reports",
-        "Administrative workflows",
-        "Academic integrity protection",
-      ],
-      icon: (
-        <svg className="industry-icon" viewBox="0 0 48 48">
-          <path d="M8 20l16-8 16 8-16 8-16-8z" />
-          <path d="M12 22v10c0 2 5.4 6 12 6s12-4 12-6V22" />
-          <path d="M40 20v12" />
-        </svg>
-      ),
-    },
-    {
-      id: "finance",
-      number: "04",
-      name: "Finance",
-      description:
-        "Reports, analysis, presentations, client communications — SEC, FINRA, and SOX compliant with full audit trails.",
-      features: [
-        "Financial report generation",
-        "Regulatory compliance docs",
-        "Client presentations",
-        "Audit trail exports",
-      ],
-      icon: (
-        <svg className="industry-icon" viewBox="0 0 48 48">
-          <rect x="6" y="22" width="8" height="18" />
-          <rect x="20" y="14" width="8" height="26" />
-          <rect x="34" y="8" width="8" height="32" />
-        </svg>
-      ),
-    },
-  ];
-
-  const capabilities = [
-    {
-      number: "01",
-      title: "Create Any Document",
-      description:
-        "Word documents, PDFs, contracts, briefs, reports — generate professional documents in seconds. Export to any format, ready for clients or regulators.",
-    },
-    {
-      number: "02",
-      title: "Build Presentations",
-      description:
-        "Slide decks, pitch materials, board presentations — create polished PowerPoint and Google Slides directly in Archv. One click to export.",
-    },
-    {
-      number: "03",
-      title: "Process Any File",
-      description:
-        "Upload documents, images, spreadsheets, PDFs. Archv reads, analyzes, extracts, and transforms any file type into actionable output.",
-    },
-    {
-      number: "04",
-      title: "Microsoft Integration",
-      description:
-        "Native components for Word, PowerPoint, Outlook. Work inside the tools you already use with full compliance protection.",
-    },
-    {
-      number: "05",
-      title: "Complete Audit Logs",
-      description:
-        "Every action logged, timestamped, and exportable. Generate compliance reports for regulators in one click. Your audit trail, always ready.",
-    },
-    {
-      number: "06",
-      title: "One Platform, Everything",
-      description:
-        "Stop switching between tools. Research, draft, design, analyze, export — all in one place with one compliance layer protecting everything.",
-    },
-  ];
-
-  const trustBadges = [
-    { label: "SOC 2", sublabel: "In Progress" },
-    { label: "HIPAA", sublabel: "Ready" },
-    { label: "GDPR", sublabel: "Compliant" },
-    { label: "AES-256", sublabel: "Encryption" },
-  ];
-
   return (
     <div className="page">
-      {/* Mobile-hide styles for hero image */}
-      <style>{`
-        @media (max-width: 768px) {
-          .hero-image-desktop {
-            display: none !important;
-          }
-        }
-      `}</style>
-
       {/* Hero */}
-      <section
-        className="hero"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          position: "relative",
-          overflow: "visible",
-        }}
-      >
-        <div
-          className="hero-content"
-          style={{ position: "relative", zIndex: 2 }}
-        >
+      <section className="hero">
+        <div className="hero-content">
           <span className="hero-label">
             The Operating System for Regulated Industries
           </span>
@@ -182,6 +161,7 @@ function Home() {
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
+              aria-hidden="true"
             >
               <path d="M3 8h10M9 4l4 4-4 4" />
             </svg>
@@ -194,25 +174,16 @@ function Home() {
               </div>
             ))}
           </div>
+
+          {/* Mobile image */}
+          <div className="hero-image-mobile">
+            <img src="/visualcontent/ARCHV (5).svg" alt="Archv Platform" />
+          </div>
         </div>
-        <div
-          className="hero-image hero-image-desktop"
-          style={{
-            position: "absolute",
-            right: "-1000px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 1,
-          }}
-        >
-          <img
-            src="/visualcontent/HeroImg.svg"
-            alt="Archv Platform"
-            style={{
-              width: "1150px",
-              height: "auto",
-            }}
-          />
+
+        {/* Desktop image */}
+        <div className="hero-image-desktop">
+          <img src="/visualcontent/ARCHV (5).svg" alt="Archv Platform" />
         </div>
       </section>
 
@@ -227,6 +198,7 @@ function Home() {
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
+              aria-hidden="true"
             >
               <path d="M24 4L6 12v12c0 11 8 18 18 22 10-4 18-11 18-22V12L24 4z" />
               <path d="M16 24l6 6 12-12" />
@@ -252,6 +224,7 @@ function Home() {
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
+              aria-hidden="true"
             >
               <path d="M3 8h10M9 4l4 4-4 4" />
             </svg>
@@ -298,10 +271,11 @@ function Home() {
         </div>
         <div className="industries-grid">
           {industries.map((industry) => (
-            <div
+            <button
               key={industry.id}
               className="industry-card"
               onClick={() => navigate(`/faq/${industry.id}`)}
+              type="button"
             >
               {industry.icon}
               <span className="industry-number">{industry.number}</span>
@@ -321,37 +295,13 @@ function Home() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"
+                  aria-hidden="true"
                 >
                   <path d="M2 6h8M7 3l3 3-3 3" />
                 </svg>
               </span>
-            </div>
+            </button>
           ))}
-        </div>
-      </section>
-
-      {/* Demo */}
-      <section className="demo-section">
-        <div className="section-header">
-          <div>
-            <span className="section-label">See It In Action</span>
-            <h2 className="section-title">The Archv OS</h2>
-          </div>
-        </div>
-        <div className="demo-container">
-          <div className="demo-video">
-            <video
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-              style={{ width: "100%", borderRadius: "12px" }}
-            >
-              <source src="/visualcontent/ArchvDemo.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
         </div>
       </section>
 
@@ -372,6 +322,7 @@ function Home() {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
+            aria-hidden="true"
           >
             <path d="M3 8h10M9 4l4 4-4 4" />
           </svg>
